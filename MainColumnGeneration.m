@@ -4,7 +4,7 @@ nRuns = 100;                    %number of Bin Packing Problems to solve
 nItems = 200;                   %number of items in each problem
 BPParray = [];                  %filename for presampled BPP instances
 saveKPs = 0;
-LaTeXTable = 1;
+LaTeXTable = 0;
 saveBPPs = 0;
 
 subroutines =["greedy",...
@@ -38,8 +38,6 @@ for run = 1:nRuns
             [nColsGeneratedBP, BPTime, nColsGeneratedHeuristic, heuristicTime, nColsGeneratedTotal, totalTime] = BPP_CG_solver(n, C, w, @improved,[],0,1);
         elseif strcmp(subroutine, 'greedy+Improved')
             [nColsGeneratedBP, BPTime, nColsGeneratedHeuristic, heuristicTime, nColsGeneratedTotal, totalTime,XX,XY,YX,YY] = BPP_CG_solver(n, C, w, @greedy,@improved,0,1);
-        elseif strcmp(subroutine, 'greedy+ImprovedFailed')
-            [nColsGeneratedBP, BPTime, nColsGeneratedHeuristic, heuristicTime, nColsGeneratedTotal, totalTime,XX,XY,YX,YY] = BPP_CG_solver(n, C, w, @greedy,@improvedFailed,0,1);
         end
         results(subroutine).nColsGeneratedBP(run) = nColsGeneratedBP;
         results(subroutine).BPTime(run) = BPTime;
@@ -47,7 +45,7 @@ for run = 1:nRuns
         results(subroutine).heuristicTime(run) = heuristicTime;
         results(subroutine).nColsGeneratedTotal(run) = nColsGeneratedTotal;
         results(subroutine).totalTime(run) = totalTime;
-        if strcmp(subroutine, 'greedy+Improved') | strcmp(subroutine, 'greedy+ImprovedFailed')
+        if strcmp(subroutine, 'greedy+Improved')
             results(subroutine).XX(run) = XX;results(subroutine).XY(run) = XY;results(subroutine).YX(run) = YX;results(subroutine).YY(run) = YY;
         end
 
@@ -76,7 +74,7 @@ for key = subroutines
     fprintf("Average number of Columns generated: %.2f total\n", mT);
     fprintf("  via Gurobi: %.2f\n", mBP);
     fprintf("  via Subroutine: %.2f\n\n", mH);
-    if strcmp(key, 'greedy+Improved') | strcmp(key, 'greedy+ImprovedFailed')
+    if strcmp(key, 'greedy+Improved') 
         fprintf("Did the subroutines find a negative reduced cost column?\n")
         fprintf("   Greedy no, improved no: %.2f total\n", mean(R.XX))
         fprintf("   Greedy no, improved yes: %.2f total\n", mean(R.XY))
