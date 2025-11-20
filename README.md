@@ -10,14 +10,14 @@ MainColumnGeneration.m    |  Solves BPP relaxations using column generation usin
 The rest of the files are helper files. Please ensure Matlab has acces to these files when running the main files.
 All three main files should be self-explanatory, but here follows a brief instruction.
 
-HOW TO CREATE A POLICY IN MainPolicyCreation.m:
--Specify T,N, and k that the define the TMDP encompassing the KnapsackProblem (section 5.2).
--Specify the number of rows and columns for the (m,n)-Grid-Approximation (section 5.3).
--Specify what generator to use as D_0 (can be any of the pisinger generators in the helperFiles) or give a folder location with presampled instances.
--Choose an initial policy. This can be 'greedy', 'k-uniform', or any previously trained policy.
--Speficy parameters of the Monte Carlo simulation (section 5.4).
--Finally, specify if and how the obtained policy should be saved.
-The Monte Carlo simulation prints progress updates. After Policy Iteration is complete the relative improvement is Printed.
+HOW TO CREATE A POLICY IN MainPolicyCreation.m:\\
+-Specify T,N, and k that the define the TMDP encompassing the KnapsackProblem (section 5.2).\\
+-Specify the number of rows and columns for the (m,n)-Grid-Approximation (section 5.3).\\
+-Specify what generator to use as D_0 (can be any of the pisinger generators in the helperFiles) or give a folder location with presampled instances.\\
+-Choose an initial policy. This can be 'greedy', 'k-uniform', or any previously trained policy.\\
+-Speficy parameters of the Monte Carlo simulation (section 5.4).\\
+-Finally, specify if and how the obtained policy should be saved.\\
+The Monte Carlo simulation prints progress updates. After Policy Iteration is complete the relative improvement is Printed.\\
 
 HOW TO EVALUATE A POLICY WITH MainPerformanceTesting.m:
 -Specify what generator to use or where to find pregenerated instances.
