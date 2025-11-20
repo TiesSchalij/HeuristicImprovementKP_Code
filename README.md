@@ -10,7 +10,7 @@ MainColumnGeneration.m    |  Solves BPP relaxations using column generation usin
 The rest of the files are helper files. Please ensure Matlab has access to these files when running the main files.  
 All three main files should be self-explanatory, but here follows a brief instruction.  
 
-## HOW TO CREATE A POLICY IN `MainPolicyCreation.m`:
+## How to create a policy in `MainPolicyCreation.m`:
 - Specify T, N, and k that define the TMDP encompassing the KnapsackProblem (section 5.2).  
 - Specify the number of rows and columns for the (m,n)-Grid-Approximation (section 5.3).  
 - Specify what generator to use as D₀ (can be any of the Pisinger generators in the helperFiles) or give a folder location with presampled instances.  
@@ -20,7 +20,7 @@ All three main files should be self-explanatory, but here follows a brief instru
 
 The Monte Carlo simulation prints progress updates. After Policy Iteration is complete the relative improvement is printed.  
 
-## HOW TO EVALUATE A POLICY WITH `MainPerformanceTesting.m`:
+## How to evaluate a policy with `MainPerformanceTesting.m`:
 - Specify what generator to use or where to find pregenerated instances.  
 - Specify how many instances are tested and how many items they have.  
 - Specify the heuristics you wish to test on the same instances.  
@@ -34,7 +34,7 @@ The trained policies for the Pisinger generators are given in the folder `polici
 The data used to obtain the results in the paper are given in the folder `testingData`.  
 Using a policy on its corresponding dataset will yield the results presented in the paper.  
 
-## HOW TO SOLVE A BPP RELAXATION WITH `MainColumnGeneration.m`:
+## How to solve a BPP relaxation with `MainColumnGeneration.m`:
 - Specify how many BPP instances you wish to solve and how many items each instance has.  
 - Specify where to find presampled BPP instances; if left empty, new instances will be generated.  
 - Specify whether you want to save all intermediately generated KP instances.  
