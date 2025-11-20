@@ -1,20 +1,18 @@
 clear; clc;%this is a file to create improved policies
 %% User Input
-T = 5;                                          %number of timeperiods
-k = 7;                                          %number of actions to choose from
+T = 50;                                         %number of timeperiods
+k = 3;                                          %number of actions to choose from
 nItems = 200;                                   %number of items
-nRows = 6; nCols = 6;                           %parameters for the Grid approximation
-%if generating new instances                                         
-generator = [];        %any generator or []
-%if using presampled instances
-instanceFolder = 'KPfromBPP_200items_200lb700ub1000C';                            %where to find the instances or []
+nRows = 12; nCols = 12;                         %parameters for the Grid approximation
+generator = @Pa_uncorrelated;                   %any generator or []
+instanceFolder = [];                            %where to find the instances or []
 
 policyName = 'greedy';                          %initial policy
 nSamples = 1E6;                                 %how many instances to use in the Monte Carlo Simulation
 estimationCutoff = 5;                           %undersampling parameter for the Monte Carlo Simulation
 saveResults = 1;                                %if you want to save the results
 if saveResults
-    saveName = strcat('piTildePrime-',num2str(nRows),'_',num2str(nCols),'_',num2str(k),'-','BPP_20_70','-',num2str(nItems),'items.mat'); %under what name to save the results
+    saveName = strcat('piTildePrime-',num2str(nRows),'_',num2str(nCols),'_',num2str(k),'-',func2str(generator),'-',num2str(nItems),'items.mat'); %under what name to save the results
 end
 
 %% Program 
